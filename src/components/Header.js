@@ -28,6 +28,9 @@ export function renderHeader() {
 export function renderFooter() {
   const footer = document.createElement('footer');
   footer.className = 'app-footer';
-  footer.innerHTML = `Made with ❤ for little learners. PDFs generated locally — your inputs never leave your device.`;
+  footer.innerHTML = `
+    <div>Made with ❤ for little learners. PDFs generated locally — your inputs never leave your device.</div>
+    <div class="app-footer__brand">Powered by <a href="https://ibracreative.com" target="_blank" rel="noopener noreferrer">IbraCreative.com</a></div>
+  `;
   return footer;
 }
