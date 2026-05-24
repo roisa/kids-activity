@@ -187,8 +187,9 @@ p {
 
 .panel__hint {
   font-size: 13px;
+  line-height: 1.45;
   color: var(--color-text-soft);
-  margin-top: -8px;
+  margin-top: 6px;
 }
 
 .field {
