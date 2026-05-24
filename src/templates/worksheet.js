@@ -53,6 +53,7 @@ export function renderWorksheet({ title, instructions, themeLabel, accent, body 
   ${body}
 
   <!-- Footer -->
-  <text x="${pw / 2}" y="${ph - 6}" font-size="3" fill="#8a90a8" text-anchor="middle">Made with Kids Activity Generator</text>
+  <text x="${pw / 2}" y="${ph - 8}" font-size="3" fill="#8a90a8" text-anchor="middle">Made with Kids Activity Generator</text>
+  <text x="${pw / 2}" y="${ph - 4}" font-size="2.5" fill="#a8aebf" text-anchor="middle">Powered by IbraCreative.com</text>
 </svg>`;
 }
