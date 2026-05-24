@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 
-const base = process.env.VITE_BASE || '/';
+// Repo name for GitHub Pages base path.
+// Override at build time with: VITE_BASE=/my-repo/ npm run build
+const base = process.env.VITE_BASE || '/kids-activity/';
 
 export default defineConfig({
   base,
@@ -10,9 +12,7 @@ export default defineConfig({
     target: 'es2019',
   },
   server: {
-    host: '0.0.0.0',
-    port: 5000,
-    allowedHosts: true,
+    port: 5173,
     open: false,
   },
 });
