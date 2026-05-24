@@ -62,9 +62,19 @@ async function generatePollinations(prompt, seed) {
   url.searchParams.set('enhance', 'false');
   url.searchParams.set('model', 'flux');
   url.searchParams.set('seed', String(seed));
-  const res = await fetch(url, { headers: { Accept: 'image/png' } });
-  if (!res.ok) throw new Error(`Pollinations ${res.status}: ${await res.text()}`);
-  return Buffer.from(await res.arrayBuffer());
+  const delays = [5000, 10000, 20000, 40000];
+  for (let attempt = 0; attempt <= delays.length; attempt++) {
+    const res = await fetch(url, { headers: { Accept: 'image/png' } });
+    if (res.ok) return Buffer.from(await res.arrayBuffer());
+    const body = await res.text();
+    if ((res.status === 402 || res.status === 500) && attempt < delays.length) {
+      const wait = delays[attempt];
+      console.log(`  ↻ rate-limited (${res.status}), retrying in ${wait / 1000}s…`);
+      await new Promise((r) => setTimeout(r, wait));
+    } else {
+      throw new Error(`Pollinations ${res.status}: ${body}`);
+    }
+  }
 }
 
 async function generateOpenAI(prompt) {
