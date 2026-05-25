@@ -53,6 +53,9 @@ export function generate(options) {
     Array.from({ length: cols * rows }, (_, i) => i),
     rng,
   );
+  // Each regen picks a different subset of the theme's items so the same
+  // 2x2 dinosaur puzzle doesn't always show the same first four animals.
+  const pieceItems = shuffle(theme.items, rng).slice(0, cols * rows);
   const sCols = cols * rows; // single row of pieces below
   const sCellW = Math.min(scrambleH * 0.9, rect.width / sCols);
   const totalW = sCellW * sCols;
@@ -65,7 +68,7 @@ export function generate(options) {
     const px = sx0 + slot * sCellW;
     const py = sy0;
     body += `<rect x="${px}" y="${py}" width="${sCellW}" height="${sCellW}" fill="white" stroke="#1b1f3a" stroke-width="0.4" stroke-dasharray="1 1"/>`;
-    const item = theme.items[targetIndex % theme.items.length];
+    const item = pieceItems[targetIndex];
     body += `<text x="${px + sCellW / 2}" y="${py + sCellW * 0.6}" text-anchor="middle" font-size="${sCellW * 0.5}" font-family="Arial, Helvetica, sans-serif">${item.emoji}</text>`;
     // Number badge (matches the target cell number)
     const badgeR = Math.min(sCellW * 0.13, 2.4);

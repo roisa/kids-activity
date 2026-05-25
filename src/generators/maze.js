@@ -3,7 +3,7 @@
 // render walls and overlay the unique start->finish solution path as decoration.
 
 import { getActivityRect } from '../templates/worksheet.js';
-import { createRng } from '../utils/random.js';
+import { createRng, shuffle } from '../utils/random.js';
 
 function generateMaze(cols, rows, seed) {
   const rng = createRng(seed);
@@ -96,9 +96,11 @@ export function generate(options) {
     }
   }
 
-  // Start and finish markers (top-left and bottom-right cells)
-  const startItem = theme.items[0];
-  const endItem = theme.items[1] || theme.items[0];
+  // Start and finish markers (top-left and bottom-right cells).
+  // Pick two distinct items from the theme so each regen feels fresh.
+  const shuffled = shuffle(theme.items, createRng(seed ^ 0x9e3779b9));
+  const startItem = shuffled[0];
+  const endItem = shuffled[1] || shuffled[0];
   const sx = ox + cell / 2;
   const sy = oy + cell / 2;
   const ex = ox + (cols - 0.5) * cell;
