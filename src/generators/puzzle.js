@@ -26,7 +26,6 @@ export function generate(options) {
   const cellW = rect.width / cols;
   const cellH = targetH / rows;
   body += `<rect x="${rect.x}" y="${rect.y}" width="${rect.width}" height="${targetH}" fill="white" stroke="${theme.palette[0]}" stroke-width="0.6" stroke-dasharray="2 2" rx="2"/>`;
-  body += `<text x="${rect.x + 3}" y="${rect.y - 1}" font-size="3.6" fill="#5b6079">Place the pieces in the empty frame ↓</text>`;
 
   // Draw faint grid lines
   for (let c = 1; c < cols; c++) {

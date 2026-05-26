@@ -10,7 +10,7 @@ export const PAGE = {
   marginX: 16,
   marginTop: 18,
   marginBottom: 16,
-  headerHeight: 26,
+  headerHeight: 32, // band (22) + name/date row + spacing
   footerHeight: 10,
 };
 
@@ -38,16 +38,24 @@ export function renderWorksheet({ title, instructions, themeLabel, accent, body 
   const { width: pw, height: ph, marginX, marginTop } = PAGE;
   const accentColor = accent || '#7c5cff';
 
+  const bandH = 22;
+  const subtitleY = marginTop + 7;
+  const titleY = marginTop + 16;
+  const nameDateY = marginTop + bandH + 5; // own row, below the colored band
+  const instructionsY = nameDateY + 6;
+
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${pw} ${ph}" width="100%" height="100%" font-family="Quicksand, Inter, Arial, sans-serif">
   <rect x="0" y="0" width="${pw}" height="${ph}" fill="#ffffff"/>
-  <!-- Header -->
-  <rect x="${marginX}" y="${marginTop}" width="${pw - marginX * 2}" height="22" rx="4" fill="${accentColor}" opacity="0.12"/>
-  <text x="${marginX + 5}" y="${marginTop + 9}" font-size="4" font-weight="600" fill="${accentColor}" letter-spacing="0.5">${escapeXml(themeLabel.toUpperCase())} · KIDS WORKSHEET</text>
-  <text x="${marginX + 5}" y="${marginTop + 17}" font-size="7" font-weight="700" fill="#1b1f3a">${escapeXml(title)}</text>
-  <text x="${pw - marginX - 5}" y="${marginTop + 17}" font-size="3.6" fill="#5b6079" text-anchor="end">Name: _____________________   Date: ___________</text>
+  <!-- Header band -->
+  <rect x="${marginX}" y="${marginTop}" width="${pw - marginX * 2}" height="${bandH}" rx="4" fill="${accentColor}" opacity="0.12"/>
+  <text x="${marginX + 5}" y="${subtitleY}" font-size="4" font-weight="600" fill="${accentColor}" letter-spacing="0.5">${escapeXml(themeLabel.toUpperCase())} · KIDS WORKSHEET</text>
+  <text x="${marginX + 5}" y="${titleY}" font-size="7" font-weight="700" fill="#1b1f3a">${escapeXml(title)}</text>
+
+  <!-- Name + Date (own row, below band) -->
+  <text x="${pw - marginX - 5}" y="${nameDateY}" font-size="3.6" fill="#5b6079" text-anchor="end">Name: _____________________   Date: ___________</text>
 
   <!-- Instructions -->
-  <text x="${marginX}" y="${marginTop + 26}" font-size="3.6" fill="#5b6079">${escapeXml(instructions)}</text>
+  <text x="${marginX}" y="${instructionsY}" font-size="3.6" fill="#5b6079">${escapeXml(instructions)}</text>
 
   <!-- Body -->
   ${body}
