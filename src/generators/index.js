@@ -9,6 +9,9 @@ import * as tracing from './tracing.js';
 import * as coloring from './coloring.js';
 import * as matching from './matching.js';
 import * as puzzle from './puzzle.js';
+import * as wordsearch from './wordsearch.js';
+import * as counting from './counting.js';
+import * as pattern from './pattern.js';
 
 const GENERATORS = {
   maze: maze.generate,
@@ -16,6 +19,9 @@ const GENERATORS = {
   coloring: coloring.generate,
   matching: matching.generate,
   puzzle: puzzle.generate,
+  wordsearch: wordsearch.generate,
+  counting: counting.generate,
+  pattern: pattern.generate,
 };
 
 // Returns a worksheet object: { id, title, themeLabel, ageLabel, activityType, svg }
