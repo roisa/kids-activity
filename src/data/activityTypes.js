@@ -5,8 +5,11 @@ export const ACTIVITY_TYPES = [
   { id: 'matching', label: 'Matching', icon: '🔗' },
   { id: 'puzzle', label: 'Puzzle', icon: '🧩' },
   { id: 'wordsearch', label: 'Word Search', icon: '🔍' },
-  { id: 'counting', label: 'Counting', icon: '🔢' },
+  { id: 'counting', label: 'Counting', icon: '🧮' },
   { id: 'pattern', label: 'Patterns', icon: '🧠' },
+  { id: 'dotToDot', label: 'Dot-to-Dot', icon: '📍' },
+  { id: 'firstLetter', label: 'First Letter', icon: '🔤' },
+  { id: 'traceLines', label: 'Trace Lines', icon: '〰️' },
 ];
 
 export function getActivityType(id) {

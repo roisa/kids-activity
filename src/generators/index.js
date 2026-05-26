@@ -12,6 +12,9 @@ import * as puzzle from './puzzle.js';
 import * as wordsearch from './wordsearch.js';
 import * as counting from './counting.js';
 import * as pattern from './pattern.js';
+import * as dotToDot from './dotToDot.js';
+import * as firstLetter from './firstLetter.js';
+import * as traceLines from './traceLines.js';
 
 const GENERATORS = {
   maze: maze.generate,
@@ -22,6 +25,9 @@ const GENERATORS = {
   wordsearch: wordsearch.generate,
   counting: counting.generate,
   pattern: pattern.generate,
+  dotToDot: dotToDot.generate,
+  firstLetter: firstLetter.generate,
+  traceLines: traceLines.generate,
 };
 
 // Returns a worksheet object: { id, title, themeLabel, ageLabel, activityType, svg }

@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "vite build && gh-pages -d dist",
-    "generate:coloring": "node scripts/generate-coloring.mjs"
+    "generate:coloring": "node scripts/generate-coloring.mjs",
+    "optimize:coloring": "node scripts/optimize-coloring.mjs"
   },
   "dependencies": {
     "jspdf": "^2.5.2"
