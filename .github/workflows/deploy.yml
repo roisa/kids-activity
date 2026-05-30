@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -14,29 +14,25 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# NOTE: This project has moved to Baby Mo:
+#   https://babymo.id/id/apps/kids-activity/
+# To avoid two competing copies (and split SEO), GitHub Pages now publishes a
+# static redirect (the ./redirect folder) instead of building the app. The app
+# source is preserved in this repo for archival/history.
+#
+# To restore the standalone app deploy, revert this workflow to its previous
+# form (npm ci -> npm run build -> publish ./dist with a 404.html fallback).
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - name: Build
-        env:
-          # Derive base path from repo name so the app works at /<repo>/.
-          VITE_BASE: /${{ github.event.repository.name }}/
-        run: npm run build
-      - name: Add 404.html (SPA fallback)
-        run: cp dist/index.html dist/404.html
       - uses: actions/configure-pages@v5
         with:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: redirect
 
   deploy:
     needs: build

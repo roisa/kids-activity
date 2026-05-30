@@ -1,5 +1,13 @@
 # Kids Activity Generator
 
+> **📦 This project has moved to Baby Mo.**
+> The generator now lives natively at
+> **<https://babymo.id/id/apps/kids-activity/>** (no more iframe).
+> GitHub Pages here publishes a static redirect to that URL so there is one
+> canonical copy and SEO isn't split across two sites. The app source below is
+> kept for archival/history. To restore the standalone deploy, revert
+> `.github/workflows/deploy.yml` to build and publish `dist`.
+
 Generate printable educational worksheets for kids — mazes, tracing pages,
 coloring prompts, matching activities, and simple cut-and-paste puzzles —
 right in the browser. No backend, no sign-up, no telemetry.
